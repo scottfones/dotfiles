@@ -1,0 +1,160 @@
+format = """
+$cmd_duration\
+[░▒▓](#e7d7ad)\
+[ ζ ](bg:#e7d7ad fg:#090c0c)\
+[](bg:#eebd35 fg:#e7d7ad)\
+$directory\
+[](fg:#eebd35 bg:#98971a)\
+$git_branch\
+$git_status\
+[](fg:#98971a bg:#d65d0e)\
+$aws\
+$azure\
+$buf\
+$c\
+$conda\
+$dart\
+$elixir\
+$elm\
+$golang\
+$haskell\
+$java\
+$julia\
+$nodejs\
+$php\
+$python\
+$rust\
+[](fg:#d65d0e bg:#32302f)\
+$time\
+$sudo\
+[ ](fg:#32302f)\
+\n$character"""
+
+[cmd_duration]
+format = "duration [$duration]($style)\n"
+
+[directory]
+read_only = ""
+style = "fg:#090c0c bg:#eebd35"
+read_only_style = "fg:#cc241d bg:#eebd35"
+format = "[ $path ]($style)[$read_only]($read_only_style)"
+truncation_length = 5
+truncation_symbol = "…/"
+
+[git_branch]
+symbol = ""
+style = "bg:#98971a"
+format = '[[ $symbol $branch(:$remote_branch) ](fg:#090c0c bg:#98971a)]($style)'
+
+[git_status]
+style = "bg:#98971a"
+format = '[[($all_status$ahead_behind )](fg:#090c0c bg:#98971a)]($style)'
+
+[aws]
+disabled = false
+symbol = "☁️ "
+style = "bg:#d65d0e"
+format = '[[$symbol($profile )(\\($region\\) )(\\[$duration\\])](fg:#090c0c bg:#d65d0e)]($style)'
+
+[azure]
+disabled = false
+symbol = "ﴃ"
+style = "bg:#d65d0e"
+format = "[[$symbol($subscription)](fg:#090c0c bg:#d65d0e)]($style)"
+
+[buf]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[c]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version(-$name)) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[conda]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol$environment ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[dart]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[docker_context]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol$context ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[elixir]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version \(OTP $otp_version\) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[elm]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[golang]
+symbol = "ﳑ"
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[haskell]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[hg_branch]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[java]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[julia]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[memory_usage]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[nodejs]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[php]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[python]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ ${symbol}${pyenv_prefix}(${version} )(\($virtualenv\) ) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[rust]
+symbol = ""
+style = "bg:#d65d0e"
+format = '[[ $symbol ($version) ](fg:#090c0c bg:#d65d0e)]($style)'
+
+[time]
+disabled = false
+time_format = "%R" # Hour:Minute Format
+style = "bg:#32302f"
+format = '[[  $time ](fg:#ebdbb2 bg:#32302f)]($style)'
+
+[sudo]
+disabled = false
+style = "bg:#32302f"
+format = '[[$symbol](fg:#ebdbb2 bg:#32302f)]($style)'
+
