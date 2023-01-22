@@ -1,7 +1,8 @@
 format = """
 $cmd_duration\
 [░▒▓](#e7d7ad)\
-[ ζ ](bg:#e7d7ad fg:#090c0c)\
+$hostname\
+[ζ ](bg:#e7d7ad fg:#090c0c)\
 [](bg:#eebd35 fg:#e7d7ad)\
 $directory\
 [](fg:#eebd35 bg:#98971a)\
@@ -32,6 +33,10 @@ $sudo\
 
 [cmd_duration]
 format = "duration [$duration]($style)\n"
+
+[hostname]
+style = "bg:#e7d7ad " 
+format = '[[$ssh_symbol](bg:#e7d7ad fg:#090c0c)]($style)'
 
 [directory]
 read_only = ""
