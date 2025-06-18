@@ -1,0 +1,10 @@
+[Unit]
+Description=Backup mysig database and images
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h/Applications/MysigBackup
+ExecStart=%h/Applications/MysigBackup/mysig-backup
+
+[Install]
+WantedBy=default.target
