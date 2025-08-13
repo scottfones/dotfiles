@@ -1,5 +1,5 @@
--- I am fonts.lua and I should live in ~/.config/wezterm/fonts.lua
-local wezterm = require("wezterm")
+-- I am cursor.lua and I should live in ~/.config/wezterm/cursor.lua
+-- local wezterm = require("wezterm")
 
 -- This is the module table that we will export
 local module = {}
@@ -10,14 +10,9 @@ local module = {}
 -- the config is for them to export an `apply_to_config`
 -- function that accepts the config object, like this:
 function module.apply_to_config(config)
-	config.font = wezterm.font("MonaspiceNe Nerd Font Mono")
-	config.font_size = 14.0
-
-	-- Tab bar font configuration
-	config.window_frame = {
-		font = wezterm.font({ family = "MonaspiceNe Nerd Font Mono", weight = "Bold" }),
-		font_size = 14.0,
-	}
+	config.default_cursor_style = "BlinkingBlock"
+	config.cursor_blink_rate = 750
+	config.animation_fps = 60
 end
 
 return module

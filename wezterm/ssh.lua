@@ -1,4 +1,19 @@
--- I am window.lua and I should live in ~/.config/wezterm/window.lua
+-- I am ssh.lua and I should live in ~/.config/wezterm/ssh.lua
+
+local ssh_domains = {
+	{
+		name = "SERVER NAME",
+		remote_address = "YOUR IP HERE",
+		username = "YOUR USERNAME HERE",
+		multiplexing = "None",
+	},
+	{
+		name = "SERVER NAME",
+		remote_address = "YOUR IP HERE",
+		username = "YOUR USERNAME HERE",
+		multiplexing = "None",
+	},
+}
 
 -- This is the module table that we will export
 local module = {}
@@ -8,12 +23,6 @@ local module = {}
 -- The suggested convention for making modules that update
 -- the config is for them to export an `apply_to_config`
 -- function that accepts the config object, like this:
-function module.apply_to_config(config)
-	config.window_background_opacity = 0.75
-	config.window_decorations = "NONE"
-
-	config.initial_rows = 200
-	config.initial_cols = 200
-end
+function module.apply_to_config(config) end
 
 return module

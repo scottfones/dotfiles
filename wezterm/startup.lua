@@ -1,5 +1,4 @@
 -- I am startup.lua and I should live in ~/.config/wezterm/startup.lua
-local wezterm = require("wezterm")
 
 -- This is the module table that we will export
 local module = {}
@@ -10,7 +9,9 @@ local module = {}
 -- the config is for them to export an `apply_to_config`
 -- function that accepts the config object, like this:
 function module.apply_to_config(config)
-	config.default_prog = { "/bin/bash", "-l" }
+	-- Spawn a fish shell in login mode
+	config.default_prog = { "/usr/bin/fish", "-l" }
+	-- config.default_prog = { "/bin/bash", "-l" }
 end
 
 return module
