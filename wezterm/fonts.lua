@@ -10,12 +10,16 @@ local module = {}
 -- the config is for them to export an `apply_to_config`
 -- function that accepts the config object, like this:
 function module.apply_to_config(config)
-	config.font = wezterm.font("MonaspiceNe Nerd Font Mono")
+	config.font = wezterm.font_with_fallback({
+		{ family = "MonaspiceNe Nerd Font Mono", weight = "Medium" },
+		{ family = "FiraCode Nerd Font Mono", weight = "Medium" },
+		{ family = "Symbols Nerd Font Mono", weight = "Regular" },
+	})
 	config.font_size = 14.0
 
 	-- Tab bar font configuration
 	config.window_frame = {
-		font = wezterm.font({ family = "MonaspiceNe Nerd Font Mono", weight = "Bold" }),
+		font = wezterm.font({ family = "MonaspiceNe Nerd Font Mono", weight = "Medium" }),
 		font_size = 14.0,
 	}
 end
