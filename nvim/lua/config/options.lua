@@ -6,13 +6,7 @@
 -- Set to "bacon-ls" to use bacon-ls instead of rust-analyzer.
 -- only for diagnostics. The rest of LSP support will still be
 -- provided by rust-analyzer.
-vim.g.lazyvim_rust_diagnostics = "bacon-ls"
-vim.diagnostic.config({
-  virtual_text = true,
-  signs = true,
-  underline = true,
-  update_in_insert = true,
-})
+-- vim.g.lazyvim_rust_diagnostics = "bacon-ls"
 
 -- LSP Server to use for Python.
 -- Set to "basedpyright" to use basedpyright instead of pyright.
