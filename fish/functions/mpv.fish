@@ -1,4 +1,4 @@
-function mpv --description 'alias mpv LD_PRELOAD=/usr/lib/libjemalloc.so.2 prime-run mpv'
-  LD_PRELOAD=/usr/lib/libjemalloc.so.2 prime-run mpv $argv
-        
+function mpv --description 'alias mpv => primusrun mpv'
+    primusrun /usr/bin/mpv $argv
+
 end
