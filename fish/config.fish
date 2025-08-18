@@ -3,7 +3,8 @@ if status is-interactive
 end
 
 # Set ls colors
-eval (dircolors -c)
+# eval (dircolors -c)
+set -gx LS_COLORS "$(vivid generate one-dark)"
 
 # theme
 # source ~/.config/fish/themes/kanagawa.fish
