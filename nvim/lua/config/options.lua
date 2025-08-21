@@ -16,3 +16,6 @@ vim.g.lazyvim_python_ruff = "ruff"
 
 -- vim.g.python3_host_prog = "/home/scott/.python_general_venv/bin/python3"
 vim.o.guicursor = "n-v-c-sm-ve:block,r-cr-o-i-ci:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
+
+-- wlclipboard fix
+vim.opt.clipboard = "unnamed,unnamedplus"
