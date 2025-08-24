@@ -1,4 +1,5 @@
 function mpv --description 'alias mpv => primusrun mpv'
-    primusrun /usr/bin/mpv $argv
+    # primusrun /usr/bin/mpv $argv
+    /usr/bin/mpv $argv
 
 end
