@@ -13,6 +13,8 @@ function module.apply_to_config(config)
 	config.default_prog = { "/usr/bin/fish", "-l" }
 	-- config.default_prog = { "/bin/bash", "-l" }
 
+	config.enable_wayland = true
+
 	-- config.color_scheme = "kanagawabones"
 	-- config.color_scheme = "GitHub Dark (Gogh)"
 	-- config.color_scheme = "GruvboxDarkHard"
