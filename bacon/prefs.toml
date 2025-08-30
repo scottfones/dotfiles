@@ -123,6 +123,13 @@ command = [
   "--all-features",
   "--message-format",
   "json-diagnostic-rendered-ansi",
+  "--",
+  "-W",
+  "clippy::all",
+  "-W",
+  "clippy::pedantic",
+  "-W",
+  "clippy::nursery",
 ]
 analyzer = "cargo_json"
 need_stdout = true
