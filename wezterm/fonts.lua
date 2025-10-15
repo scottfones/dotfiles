@@ -11,8 +11,8 @@ local module = {}
 -- function that accepts the config object, like this:
 function module.apply_to_config(config)
 	config.font = wezterm.font_with_fallback({
-		{ family = "MonaspiceNe Nerd Font Propo", weight = "Medium" },
 		{ family = "FiraCode Nerd Font Propo", weight = "Medium" },
+		{ family = "MonaspiceNe Nerd Font Propo", weight = "Medium" },
 		{ family = "MonaspiceXe Nerd Font Propo", weight = "Medium" },
 		{ family = "MonaspiceAr Nerd Font Propo", weight = "Medium" },
 		{ family = "MonaspiceKr Nerd Font Propo", weight = "Medium" },
