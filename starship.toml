@@ -12,19 +12,49 @@ $git_branch\
 $git_commit\
 $git_status\
 $git_metrics\
+$hg_branch\
 [](fg:color_aqua bg:color_blue)\
+$buf\
+$bun\
 $c\
-$rust\
+$cpp\
+$cmake\
+$crystal\
+$dart\
+$deno\
+$elixir\
+$elm\
+$fennel\
+$fossil_branch\
 $golang\
-$nodejs\
-$php\
+$guix_shell\
+$haxe\
 $java\
+$julia\
 $kotlin\
-$haskell\
+$lua\
+$meson\
+$nim\
+$nix_shell\
+$nodejs\
+$ocaml\
+$package\
+$perl\
+$php\
+$pijul_channel\
+$pixi\
 $python\
+$rlang\
+$ruby\
+$rust\
+$scala\
+$swift\
+$zig\
 [](fg:color_blue bg:color_bg3)\
-$docker_context\
+$aws\
 $conda\
+$docker_context\
+$gradle\
 [](fg:color_bg3 bg:color_bg1)\
 $time\
 [ ](fg:color_bg1)\
