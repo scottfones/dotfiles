@@ -4,6 +4,9 @@ local wezterm = require("wezterm")
 -- This will hold the configuration.
 local config = wezterm.config_builder()
 
+-- Set TERM to constructed wezterm in ~/.terminfo/w/wezterm
+config.term = "wezterm"
+
 -- This is where you actually apply your config choices
 local startup_settings = require("startup")
 startup_settings.apply_to_config(config)
