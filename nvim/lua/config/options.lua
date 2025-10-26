@@ -2,6 +2,9 @@
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 
+-- Set default shell
+vim.o.shell = "/usr/bin/fish"
+
 -- neovim python virtual environment
 vim.g.python3_host_prog = vim.fn.expand("~/.config/nvim/venv/bin/python")
 -- LSP Server to use for Python.
