@@ -6,6 +6,9 @@ end
 # eval (dircolors -c)
 set -gx LS_COLORS "$(vivid generate one-dark)"
 
+# Set jupyter config directory 
+set -gx JUPYTER_CONFIG_DIR $HOME/.config/jupyter
+
 # theme
 # source ~/.config/fish/themes/kanagawa.fish
 
