@@ -4,11 +4,12 @@ return {
     opts = {
       servers = {
         basedpyright = {
-          -- Force basedpyright to use git root as project root
-          -- This prevents duplicate LSP instances in UV workspaces
+          -- Prioritize pyproject.toml for Python project root detection
+          -- This allows Python subprojects in monorepos to be detected correctly
           root_markers = {
-            ".git",
+            "pyproject.toml",
             ".venv",
+            ".git",
           },
           settings = {
             basedpyright = {
