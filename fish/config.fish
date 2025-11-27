@@ -9,6 +9,8 @@ set -gx LS_COLORS "$(vivid generate one-dark)"
 # Set jupyter config directory 
 set -gx JUPYTER_CONFIG_DIR $HOME/.config/jupyter
 
+set -gx CLAUDE_CODE_MAX_OUTPUT_TOKENS 75000
+
 # theme
 # source ~/.config/fish/themes/kanagawa.fish
 
