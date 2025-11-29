@@ -31,6 +31,12 @@ function module.apply_to_config(config)
 			mods = "CTRL|SHIFT",
 			action = wezterm.action.ActivateTabRelative(1),
 		},
+		-- Line return for claude
+		{
+			key = "Enter",
+			mods = "SHIFT",
+			action = wezterm.action({ SendString = "\x1b\r" }),
+		},
 	}
 end
 
