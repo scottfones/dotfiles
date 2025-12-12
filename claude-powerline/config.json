@@ -1,0 +1,80 @@
+{
+  "theme": "custom",
+  "display": {
+    "style": "powerline",
+    "charset": "unicode",
+    "colorCompatibility": "truecolor",
+    "autoWrap": true,
+    "lines": [
+      {
+        "segments": {
+          "directory": {
+            "enabled": true,
+            "style": "fish"
+          },
+          "model": {
+            "enabled": true
+          },
+          "block": {
+            "enabled": true,
+            "type": "time",
+            "burnType": "tokens"
+          },
+          "metrics": {
+            "enabled": true,
+            "showResponseTime": false,
+            "showLastResponseTime": false,
+            "showDuration": true,
+            "showMessageCount": true,
+            "showLinesAdded": true,
+            "showLinesRemoved": true
+          }
+        }
+      },
+      {
+        "segments": {
+          "git": {
+            "enabled": true,
+            "showSha": false,
+            "showWorkingTree": true,
+            "showOperation": true,
+            "showTag": true,
+            "showTimeSinceCommit": true,
+            "showStashCount": true,
+            "showUpstream": true,
+            "showRepoName": true
+          }
+        }
+      }
+    ]
+  },
+  "budget": {
+    "session": {
+      "warningThreshold": 80
+    },
+    "today": {
+      "amount": 5.0,
+      "warningThreshold": 80
+    },
+    "block": {
+      "amount": 20000000,
+      "type": "tokens",
+      "warningThreshold": 80
+    }
+  },
+  "colors": {
+    "custom": {
+      "block": { "bg": "#458588", "fg": "#fbf1c7" },
+      "context": { "bg": "#3c3836", "fg": "#fbf1c7" },
+      "directory": { "bg": "#d65d0e", "fg": "#fbf1c7" },
+      "git": { "bg": "#689d6a", "fg": "#fbf1c7" },
+      "metrics": { "bg": "#665c54", "fg": "#fbf1c7" },
+      "model": { "bg": "#d79921", "fg": "#fbf1c7" },
+      "session": { "bg": "#b16286", "fg": "#fbf1c7" },
+      "today": { "bg": "#98971a", "fg": "#fbf1c7" }
+    }
+  },
+  "modelContextLimits": {
+    "sonnet": 200000
+  }
+}
