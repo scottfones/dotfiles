@@ -11,6 +11,8 @@ set -gx JUPYTER_CONFIG_DIR $HOME/.config/jupyter
 
 set -gx CLAUDE_CODE_MAX_OUTPUT_TOKENS 75000
 
+# set -gx RUSTC_WRAPPER sccache
+
 # theme
 # source ~/.config/fish/themes/kanagawa.fish
 
