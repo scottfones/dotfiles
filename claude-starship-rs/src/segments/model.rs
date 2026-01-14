@@ -13,11 +13,13 @@ pub struct ModelSegment;
 
 impl Segment for ModelSegment {
     fn render(&self, ctx: &RenderContext<'_>) -> Option<String> {
-        let model_name = ctx.input.model.display_name.as_deref()?;
-
-        if model_name.is_empty() {
-            return None;
-        }
+        let model_name = ctx
+            .input
+            .model
+            .display_name
+            .as_deref()
+            .filter(|s| !s.is_empty())
+            .unwrap_or("Claude");
 
         let content = format!("{} {}", icons::STAR, model_name);
 
