@@ -1,5 +1,10 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+# Timeout for commands executed by starship (500).
+command_timeout = 500
+# Timeout for starship to scan files (30).
+scan_timeout = 50
+
 format = """
 [](color_orange)\
 $hostname\
@@ -12,6 +17,7 @@ $git_branch\
 $git_commit\
 $git_status\
 $git_metrics\
+$custom\
 $hg_branch\
 [](fg:color_aqua bg:color_blue)\
 $buf\
@@ -433,3 +439,15 @@ format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
 symbol = " "
 style = "bg:color_blue"
 format = '[[ $symbol( $version) ](fg:color_fg0 bg:color_blue)]($style)'
+
+#
+# CUSTOM: Git Last Commit Time
+#
+[custom.git_last_commit]
+when = 'true'
+shell = ["sh", "--norc"]
+command = '/home/scott/.config/git-last-commit/target/release/git-last-commit'
+symbol = " "
+style = "bg:color_aqua fg:color_fg0"
+format = '[([ $symbol$output ](bg:color_aqua fg:color_fg0))]($style)'
+description = "The time since last git commit"
