@@ -24,8 +24,7 @@ impl LastCommitSegment {
     /// Check if the working tree is clean.
     fn is_clean(repo: &Repository) -> bool {
         let mut opts = StatusOptions::new();
-        opts.include_untracked(true)
-            .recurse_untracked_dirs(false);
+        opts.include_untracked(true).recurse_untracked_dirs(false);
 
         if let Ok(statuses) = repo.statuses(Some(&mut opts)) {
             statuses.is_empty()

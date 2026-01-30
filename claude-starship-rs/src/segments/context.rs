@@ -4,10 +4,10 @@ use crate::colors::{Ansi, Color, PowerlineBuilder};
 use crate::formatters::format_tokens;
 use crate::segments::{RenderContext, Segment};
 
-/// Effective context percentage: auto-compact and other features reserve ~38% of
+/// Effective context percentage: auto-compact and other features reserve ~77.5% of
 /// the 200K context window. This value should match what terminal shows as
 /// "Context left until auto-compaction".
-const EFFECTIVE_CONTEXT_PCT: u64 = 62;
+const EFFECTIVE_CONTEXT_PCT: u64 = 77;
 
 /// Context segment showing context window usage.
 ///

@@ -17,7 +17,8 @@ pub fn render(input: &ClaudeInput) -> String {
         .unwrap_or_else(|| Path::new("."));
 
     // Use absolute path
-    let current_dir = std::fs::canonicalize(current_dir).unwrap_or_else(|_| current_dir.to_path_buf());
+    let current_dir =
+        std::fs::canonicalize(current_dir).unwrap_or_else(|_| current_dir.to_path_buf());
 
     // Try to open git repo
     let git_repo = git::open_repo(&current_dir);

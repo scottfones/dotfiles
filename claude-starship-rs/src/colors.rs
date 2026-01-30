@@ -41,13 +41,13 @@ impl Color {
     /// Get the RGB values for this color.
     pub const fn rgb(self) -> Rgb {
         match self {
-            Self::Aqua => Rgb::new(104, 157, 106),    // #689d6a
-            Self::Bg1 => Rgb::new(60, 56, 54),        // #3c3836
-            Self::Bg3 => Rgb::new(102, 92, 84),       // #665c54
-            Self::Blue => Rgb::new(69, 133, 136),     // #458588
-            Self::Fg0 => Rgb::new(251, 241, 199),     // #fbf1c7
-            Self::Orange => Rgb::new(214, 93, 14),    // #d65d0e
-            Self::Yellow => Rgb::new(215, 153, 33),   // #d79921
+            Self::Aqua => Rgb::new(104, 157, 106),  // #689d6a
+            Self::Bg1 => Rgb::new(60, 56, 54),      // #3c3836
+            Self::Bg3 => Rgb::new(102, 92, 84),     // #665c54
+            Self::Blue => Rgb::new(69, 133, 136),   // #458588
+            Self::Fg0 => Rgb::new(251, 241, 199),   // #fbf1c7
+            Self::Orange => Rgb::new(214, 93, 14),  // #d65d0e
+            Self::Yellow => Rgb::new(215, 153, 33), // #d79921
         }
     }
 }
@@ -173,7 +173,14 @@ impl PowerlineBuilder {
             .unwrap();
         }
         // Continue with new colors
-        write!(self.output, "{}{}{}", Ansi::reset(), Ansi::bg(new_bg), Ansi::fg(new_fg)).unwrap();
+        write!(
+            self.output,
+            "{}{}{}",
+            Ansi::reset(),
+            Ansi::bg(new_bg),
+            Ansi::fg(new_fg)
+        )
+        .unwrap();
         self.current_bg = Some(new_bg);
         self
     }
@@ -181,7 +188,14 @@ impl PowerlineBuilder {
     /// End the current line with a trailing arrow.
     pub fn end(mut self) -> Self {
         if let Some(prev_bg) = self.current_bg {
-            write!(self.output, "{}{}{}", Ansi::reset(), Ansi::fg(prev_bg), Self::ARROW).unwrap();
+            write!(
+                self.output,
+                "{}{}{}",
+                Ansi::reset(),
+                Ansi::fg(prev_bg),
+                Self::ARROW
+            )
+            .unwrap();
         }
         write!(self.output, "{}", Ansi::reset()).unwrap();
         self.current_bg = None;

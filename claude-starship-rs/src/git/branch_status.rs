@@ -24,8 +24,7 @@ impl BranchStatusSegment {
             head.shorthand().map(|s| s.to_string())
         } else {
             // Detached HEAD - show short commit hash
-            head.target()
-                .map(|oid| format!("{:.7}", oid.to_string()))
+            head.target().map(|oid| format!("{:.7}", oid.to_string()))
         }
     }
 
@@ -34,8 +33,7 @@ impl BranchStatusSegment {
         let mut status = String::new();
 
         let mut opts = StatusOptions::new();
-        opts.include_untracked(true)
-            .recurse_untracked_dirs(false);
+        opts.include_untracked(true).recurse_untracked_dirs(false);
 
         if let Ok(statuses) = repo.statuses(Some(&mut opts)) {
             let mut has_modified = false;
@@ -87,7 +85,9 @@ impl BranchStatusSegment {
         let local_oid = head.target()?;
 
         // Get upstream branch
-        let branch = repo.find_branch(head.shorthand()?, git2::BranchType::Local).ok()?;
+        let branch = repo
+            .find_branch(head.shorthand()?, git2::BranchType::Local)
+            .ok()?;
         let upstream = branch.upstream().ok()?;
         let upstream_oid = upstream.get().target()?;
 

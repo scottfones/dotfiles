@@ -97,7 +97,10 @@ impl LanguageSegment {
                         "{}.{}.{}",
                         parts[0],
                         parts[1],
-                        parts[2].chars().take_while(|c| c.is_ascii_digit()).collect::<String>()
+                        parts[2]
+                            .chars()
+                            .take_while(|c| c.is_ascii_digit())
+                            .collect::<String>()
                     ));
                 }
                 return Some(format!("{}.{}", parts[0], parts[1]));
@@ -305,7 +308,12 @@ impl Segment for LanguageSegment {
 
         if langs.is_empty() {
             // Just output the transition arrow from orange to nothing
-            return Some(format!("{}{}{}", Ansi::fg(Color::Orange), PowerlineBuilder::ARROW, Ansi::reset()));
+            return Some(format!(
+                "{}{}{}",
+                Ansi::fg(Color::Orange),
+                PowerlineBuilder::ARROW,
+                Ansi::reset()
+            ));
         }
 
         // Build content: icon + version for each language

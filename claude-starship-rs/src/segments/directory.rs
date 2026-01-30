@@ -33,7 +33,10 @@ impl DirectorySegment {
         let components: Vec<&str> = display_path.split('/').filter(|s| !s.is_empty()).collect();
 
         if components.len() > MAX_COMPONENTS {
-            format!(".../{}", components[components.len() - MAX_COMPONENTS..].join("/"))
+            format!(
+                ".../{}",
+                components[components.len() - MAX_COMPONENTS..].join("/")
+            )
         } else {
             display_path
         }
