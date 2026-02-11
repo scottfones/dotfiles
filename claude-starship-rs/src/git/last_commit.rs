@@ -26,15 +26,13 @@ impl LastCommitSegment {
         let mut opts = StatusOptions::new();
         opts.include_untracked(true).recurse_untracked_dirs(false);
 
-        if let Ok(statuses) = repo.statuses(Some(&mut opts)) {
-            statuses.is_empty()
-        } else {
-            false
-        }
+        repo.statuses(Some(&mut opts))
+            .is_ok_and(|statuses| statuses.is_empty())
     }
 }
 
 impl Segment for LastCommitSegment {
+    #[allow(clippy::option_if_let_else)]
     fn render(&self, ctx: &RenderContext<'_>) -> Option<String> {
         let repo = ctx.git_repo?;
 

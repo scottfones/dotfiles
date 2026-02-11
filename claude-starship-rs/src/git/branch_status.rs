@@ -4,6 +4,7 @@ use crate::colors::{Ansi, Color, PowerlineBuilder};
 use crate::icons;
 use crate::segments::{RenderContext, Segment};
 use git2::{Repository, StatusOptions};
+use std::fmt::Write;
 
 /// Branch status segment showing the current branch and status indicators.
 ///
@@ -21,7 +22,7 @@ impl BranchStatusSegment {
         let head = repo.head().ok()?;
 
         if head.is_branch() {
-            head.shorthand().map(|s| s.to_string())
+            head.shorthand().map(str::to_string)
         } else {
             // Detached HEAD - show short commit hash
             head.target().map(|oid| format!("{:.7}", oid.to_string()))
@@ -105,10 +106,10 @@ impl Segment for BranchStatusSegment {
         let mut ahead_behind = String::new();
         if let Some((ahead, behind)) = Self::get_ahead_behind(repo) {
             if ahead > 0 {
-                ahead_behind.push_str(&format!("+{}", ahead));
+                let _ = write!(ahead_behind, "+{ahead}");
             }
             if behind > 0 {
-                ahead_behind.push_str(&format!("-{}", behind));
+                let _ = write!(ahead_behind, "-{behind}");
             }
         }
 

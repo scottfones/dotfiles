@@ -5,6 +5,10 @@ edition = "2024"
 description = "Claude Code statusline for starship prompt"
 license = "MIT"
 
+[lints.clippy]
+pedantic = "warn"
+nursery = "warn"
+
 [dependencies]
 chrono = "0.4"
 dirs = "5.0"

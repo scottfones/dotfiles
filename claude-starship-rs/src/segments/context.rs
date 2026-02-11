@@ -7,11 +7,11 @@ use crate::segments::{RenderContext, Segment};
 /// Effective context percentage: auto-compact and other features reserve ~77.5% of
 /// the 200K context window. This value should match what terminal shows as
 /// "Context left until auto-compaction".
-const EFFECTIVE_CONTEXT_PCT: u64 = 77;
+const EFFECTIVE_CONTEXT_PCT: u64 = 82;
 
 /// Context segment showing context window usage.
 ///
-/// - Uses cache_read_input_tokens (matches terminal display)
+/// - Uses `cache_read_input_tokens` (matches terminal display)
 /// - Calculates % used based on effective context limit
 /// - Changes color based on usage level:
 ///   - Normal (bg3): < 75%
@@ -22,7 +22,7 @@ pub struct ContextSegment;
 
 impl ContextSegment {
     /// Determine the background color based on usage percentage.
-    fn get_color(used_pct: u64) -> Color {
+    const fn get_color(used_pct: u64) -> Color {
         if used_pct >= 90 {
             Color::Orange
         } else if used_pct >= 75 {

@@ -34,7 +34,8 @@ pub struct RenderContext<'a> {
 }
 
 impl<'a> RenderContext<'a> {
-    pub fn new(
+    #[must_use]
+    pub const fn new(
         current_dir: &'a Path,
         input: &'a ClaudeInput,
         git_repo: Option<&'a Repository>,

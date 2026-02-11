@@ -13,8 +13,7 @@ use std::path::Path;
 pub fn render(input: &ClaudeInput) -> String {
     let current_dir = input
         .current_dir()
-        .map(Path::new)
-        .unwrap_or_else(|| Path::new("."));
+        .map_or_else(|| Path::new("."), Path::new);
 
     // Use absolute path
     let current_dir =

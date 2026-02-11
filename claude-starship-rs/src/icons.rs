@@ -12,7 +12,7 @@ pub const C: char = '\u{e61e}';
 /// Clock icon (U+F017).
 pub const CLOCK: char = '\u{f017}';
 
-/// CMake icon (U+E794).
+/// `CMake` icon (U+E794).
 pub const CMAKE: char = '\u{e794}';
 
 /// C++ language icon (U+E61D).

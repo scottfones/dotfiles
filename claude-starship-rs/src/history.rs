@@ -32,11 +32,13 @@ fn history_path() -> Option<PathBuf> {
 /// Returns `None` if the history file doesn't exist or has no recent entries.
 /// Returns `Some("reset")` if the window has already reset.
 /// Returns `Some("Xh Ym")` for the remaining time.
+#[must_use]
 pub fn calculate_reset_time() -> Option<String> {
     let path = history_path()?;
     let file = File::open(&path).ok()?;
     let reader = BufReader::new(file);
 
+    #[allow(clippy::cast_possible_truncation)] // u64::MAX ms = ~584 million years
     let now_ms = std::time::SystemTime::now()
         .duration_since(std::time::UNIX_EPOCH)
         .ok()?
@@ -56,10 +58,7 @@ pub fn calculate_reset_time() -> Option<String> {
         if let Ok(entry) = serde_json::from_str::<HistoryEntry>(&line)
             && entry.timestamp >= window_start
         {
-            earliest = Some(match earliest {
-                Some(e) => e.min(entry.timestamp),
-                None => entry.timestamp,
-            });
+            earliest = Some(earliest.map_or(entry.timestamp, |e: u64| e.min(entry.timestamp)));
         }
     }
 
@@ -80,6 +79,7 @@ pub fn calculate_reset_time() -> Option<String> {
 }
 
 /// Get the default reset time string when no history is available.
+#[must_use]
 pub fn default_reset_time() -> String {
     "5h".to_string()
 }

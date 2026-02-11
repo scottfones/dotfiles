@@ -79,12 +79,17 @@ pub struct Cost {
     pub total_duration_ms: u64,
 }
 
-fn default_context_size() -> u64 {
+const fn default_context_size() -> u64 {
     200_000
 }
 
 impl ClaudeInput {
     /// Parse input from stdin.
+    ///
+    /// # Errors
+    ///
+    /// Returns `io::Error` if reading from stdin fails or the input
+    /// contains invalid JSON.
     pub fn from_stdin() -> io::Result<Self> {
         let stdin = io::stdin();
         let mut input = String::new();
@@ -101,6 +106,7 @@ impl ClaudeInput {
     }
 
     /// Get the current working directory from workspace or cwd fallback.
+    #[must_use]
     pub fn current_dir(&self) -> Option<&str> {
         self.workspace
             .current_dir
@@ -115,7 +121,7 @@ mod tests {
 
     #[test]
     fn test_parse_minimal() {
-        let json = r#"{}"#;
+        let json = r"{}";
         let input: ClaudeInput = serde_json::from_str(json).unwrap();
         assert!(input.model.display_name.is_none());
     }

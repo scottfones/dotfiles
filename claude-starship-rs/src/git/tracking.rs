@@ -21,7 +21,7 @@ impl TrackingSegment {
             .ok()?;
         let upstream = branch.upstream().ok()?;
 
-        upstream.name().ok().flatten().map(|s| s.to_string())
+        upstream.name().ok().flatten().map(str::to_string)
     }
 }
 

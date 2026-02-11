@@ -15,6 +15,7 @@ pub use tracking::TrackingSegment;
 use git2::Repository;
 
 /// Try to open a Git repository at or above the given path.
+#[must_use]
 pub fn open_repo(path: &std::path::Path) -> Option<Repository> {
     Repository::discover(path).ok()
 }

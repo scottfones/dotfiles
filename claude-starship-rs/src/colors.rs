@@ -14,6 +14,7 @@ pub struct Rgb {
 }
 
 impl Rgb {
+    #[must_use]
     pub const fn new(r: u8, g: u8, b: u8) -> Self {
         Self { b, g, r }
     }
@@ -39,6 +40,7 @@ pub enum Color {
 
 impl Color {
     /// Get the RGB values for this color.
+    #[must_use]
     pub const fn rgb(self) -> Rgb {
         match self {
             Self::Aqua => Rgb::new(104, 157, 106),  // #689d6a
@@ -57,19 +59,22 @@ pub struct Ansi;
 
 impl Ansi {
     /// Generate background color escape sequence.
+    #[must_use]
     pub fn bg(color: Color) -> String {
         let rgb = color.rgb();
         format!("\x1b[48;2;{};{};{}m", rgb.r, rgb.g, rgb.b)
     }
 
     /// Generate foreground color escape sequence.
+    #[must_use]
     pub fn fg(color: Color) -> String {
         let rgb = color.rgb();
         format!("\x1b[38;2;{};{};{}m", rgb.r, rgb.g, rgb.b)
     }
 
     /// Reset all formatting.
-    pub fn reset() -> &'static str {
+    #[must_use]
+    pub const fn reset() -> &'static str {
         "\x1b[0m"
     }
 }
@@ -82,21 +87,25 @@ pub struct Style {
 }
 
 impl Style {
+    #[must_use]
     pub const fn new() -> Self {
         Self { bg: None, fg: None }
     }
 
+    #[must_use]
     pub const fn bg(mut self, color: Color) -> Self {
         self.bg = Some(color);
         self
     }
 
+    #[must_use]
     pub const fn fg(mut self, color: Color) -> Self {
         self.fg = Some(color);
         self
     }
 
     /// Generate ANSI escape sequence for this style.
+    #[must_use]
     pub fn to_ansi(&self) -> String {
         let mut result = String::new();
         if let Some(fg) = self.fg {
@@ -127,7 +136,8 @@ impl PowerlineBuilder {
     /// Rounded left cap.
     pub const ARROW_LEFT: char = '\u{e0b6}';
 
-    pub fn new() -> Self {
+    #[must_use]
+    pub const fn new() -> Self {
         Self {
             current_bg: None,
             output: String::new(),
@@ -135,6 +145,7 @@ impl PowerlineBuilder {
     }
 
     /// Start a new segment with a rounded left cap (for first segment of a line).
+    #[must_use]
     pub fn start_rounded(mut self, bg: Color, fg: Color) -> Self {
         // Left cap: foreground = segment bg color, no background
         write!(
@@ -153,12 +164,15 @@ impl PowerlineBuilder {
     }
 
     /// Add content to the current segment.
+    #[must_use]
     pub fn content(mut self, text: &str) -> Self {
-        write!(self.output, " {} ", text).unwrap();
+        write!(self.output, " {text} ").unwrap();
         self
     }
 
     /// Transition to a new segment with powerline arrow.
+    #[must_use]
+    #[allow(clippy::similar_names)]
     pub fn transition(mut self, new_bg: Color, new_fg: Color) -> Self {
         if let Some(prev_bg) = self.current_bg {
             // Arrow: fg = previous bg, bg = new bg
@@ -186,6 +200,7 @@ impl PowerlineBuilder {
     }
 
     /// End the current line with a trailing arrow.
+    #[must_use]
     pub fn end(mut self) -> Self {
         if let Some(prev_bg) = self.current_bg {
             write!(
@@ -203,6 +218,7 @@ impl PowerlineBuilder {
     }
 
     /// End the current segment without a trailing arrow (for plain transitions).
+    #[must_use]
     pub fn end_plain(mut self) -> Self {
         write!(self.output, "{}", Ansi::reset()).unwrap();
         self.current_bg = None;
@@ -210,6 +226,7 @@ impl PowerlineBuilder {
     }
 
     /// Get the final output string.
+    #[must_use]
     pub fn build(self) -> String {
         self.output
     }

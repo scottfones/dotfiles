@@ -3,6 +3,7 @@
 use crate::colors::{Ansi, Color, PowerlineBuilder};
 use crate::icons;
 use crate::segments::{RenderContext, Segment};
+use std::fmt::Write;
 use std::fs;
 use std::path::Path;
 use std::process::Command;
@@ -74,13 +75,14 @@ impl LanguageSegment {
         let stdout = String::from_utf8_lossy(&output.stdout);
 
         // Extract version number using simple parsing
-        if let Some(pat) = pattern {
-            // Remove pattern prefix if present (e.g., "go" from "go1.21.0")
-            let text = stdout.replace(pat, "");
-            Self::extract_version(&text)
-        } else {
-            Self::extract_version(&stdout)
-        }
+        pattern.map_or_else(
+            || Self::extract_version(&stdout),
+            |pat| {
+                // Remove pattern prefix if present (e.g., "go" from "go1.21.0")
+                let text = stdout.replace(pat, "");
+                Self::extract_version(&text)
+            },
+        )
     }
 
     /// Extract a version number (X.Y.Z or X.Y) from text.
@@ -99,7 +101,7 @@ impl LanguageSegment {
                         parts[1],
                         parts[2]
                             .chars()
-                            .take_while(|c| c.is_ascii_digit())
+                            .take_while(char::is_ascii_digit)
                             .collect::<String>()
                     ));
                 }
@@ -110,6 +112,7 @@ impl LanguageSegment {
     }
 
     /// Detect all languages in the given directory.
+    #[allow(clippy::too_many_lines)]
     fn detect_languages(dir: &Path) -> Vec<DetectedLanguage> {
         let mut langs = Vec::new();
 
@@ -320,9 +323,9 @@ impl Segment for LanguageSegment {
         let mut content = String::new();
         for lang in &langs {
             if let Some(ref version) = lang.version {
-                content.push_str(&format!(" {} {}", lang.icon, version));
+                let _ = write!(content, " {} {}", lang.icon, version);
             } else {
-                content.push_str(&format!(" {}", lang.icon));
+                let _ = write!(content, " {}", lang.icon);
             }
         }
 
