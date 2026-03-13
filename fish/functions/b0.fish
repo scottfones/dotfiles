@@ -1,4 +1,5 @@
-function b0 --wraps='gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 0>"' --description 'alias b0 gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 0>"'
-  gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 0>" $argv
-        
+function b0 --description "Set screen and keyboard brightness to 0"
+    brightnessctl --device=intel_backlight set 0%
+    brightnessctl --device=nvidia_0 set 0%
+    brightnessctl --device=tpacpi::kbd_backlight set 0%
 end

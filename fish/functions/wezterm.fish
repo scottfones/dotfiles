@@ -1,3 +1,3 @@
-function wezterm --wraps='/home/scott/Applications/Wezterm/wezterm/target/release/wezterm --config-file /home/scott/.config/wezterm/wezterm.lua' --description 'alias wezterm=/home/scott/Applications/Wezterm/wezterm/target/release/wezterm --config-file /home/scott/.config/wezterm/wezterm.lua'
+function wezterm --description "WezTerm from local build"
     /home/scott/Applications/Wezterm/wezterm/target/release/wezterm --config-file /home/scott/.config/wezterm/wezterm.lua $argv
 end

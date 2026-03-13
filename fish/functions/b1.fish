@@ -1,4 +1,5 @@
-function b1 --wraps='gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 100>"' --description 'alias b1 gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 100>"'
-  gdbus call --session --dest org.gnome.SettingsDaemon.Power --object-path /org/gnome/SettingsDaemon/Power --method org.freedesktop.DBus.Properties.Set org.gnome.SettingsDaemon.Power.Screen Brightness "<int32 100>" $argv
-        
+function b1 --description "Set screen brightness to max, keyboard to 50%"
+    brightnessctl --device=intel_backlight set 100%
+    brightnessctl --device=nvidia_0 set 100%
+    brightnessctl --device=tpacpi::kbd_backlight set 50%
 end
