@@ -50,3 +50,10 @@ ai
 Cloudflare
 PubMed
 Backend
+Navier
+TextureFormat
+CurrentSurfaceTexture
+InstanceDescriptor
+DeviceDescriptor
+RenderPipelineDescriptor
+auditable
