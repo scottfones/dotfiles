@@ -1,11 +1,24 @@
-human = true
 icons = true
+human = true
 level = 1
-threads = 4
+no-ignore = true
+threads = 6
 
-# How many lines of Rust are in this code base?
-# e.g. `erd --config rs`
-[rs]
-disk-usage = "line"
+# Compute file sizes like `du`
+# e.g. `erd --config du`
+[du]
+disk_usage = "block"
+icons = true
+layout = "flat"
+no-ignore = true
+no-git = true
+hidden = true
 level = 1
-pattern = "\\.rs$"
+
+# Do as `ls -l`
+# e.g. `erd --config ls`
+[ls]
+icons = true
+human = true
+level = 1
+long = true
