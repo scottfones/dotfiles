@@ -13,6 +13,10 @@ vim.g.lazyvim_python_lsp = "basedpyright"
 -- Set to "ruff_lsp" to use the old LSP implementation version.
 vim.g.lazyvim_python_ruff = "ruff"
 
+-- Require a prettier config file before activating prettier.
+-- Prevents prettier from conflicting with biome in projects that use biome.
+vim.g.lazyvim_prettier_needs_config = true
+
 vim.o.guicursor = "n-v-c-sm-ve:block,r-cr-o-i-ci:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor"
 
 -- wl clipboard transient window fix
