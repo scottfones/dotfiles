@@ -5,6 +5,10 @@
 -- Set default shell
 vim.o.shell = "/usr/bin/fish"
 
+-- Skip camelCase and snake_case identifier fragments during spell check.
+-- Defensive against treesitter parsers that miss the @spell capture.
+vim.opt.spelloptions = "camel"
+
 -- neovim python virtual environment
 vim.g.python3_host_prog = vim.fn.expand("~/.config/nvim/venv/bin/python")
 -- LSP Server to use for Python.
