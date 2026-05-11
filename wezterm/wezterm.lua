@@ -7,6 +7,9 @@ local config = wezterm.config_builder()
 -- Set TERM to constructed wezterm in ~/.terminfo/w/wezterm
 config.term = "wezterm"
 
+-- Spawn a fish shell in login mode
+config.default_prog = { "/usr/bin/fish", "-l" }
+
 -- This is where you actually apply your config choices
 local startup_settings = require("startup")
 startup_settings.apply_to_config(config)

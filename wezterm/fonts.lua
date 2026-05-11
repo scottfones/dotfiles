@@ -13,9 +13,9 @@ function module.apply_to_config(config)
 	config.font = wezterm.font_with_fallback({
 		{ family = "FiraCode Nerd Font Propo", weight = "Medium" },
 		{ family = "MonaspiceNe Nerd Font Propo", weight = "Medium" },
-		{ family = "MonaspiceXe Nerd Font Propo", weight = "Medium" },
-		{ family = "MonaspiceAr Nerd Font Propo", weight = "Medium" },
 		{ family = "MonaspiceKr Nerd Font Propo", weight = "Medium" },
+		{ family = "MonaspiceAr Nerd Font Propo", weight = "Medium" },
+		{ family = "MonaspiceXe Nerd Font Propo", weight = "Medium" },
 		{ family = "Hack Nerd Font Propo", weight = "Regular" },
 		{ family = "Maple Mono NF CN", weight = "Medium" },
 		{ family = "Symbols Nerd Font", weight = "Regular" },
