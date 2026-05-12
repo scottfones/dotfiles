@@ -26,6 +26,21 @@ vim.o.guicursor = "n-v-c-sm-ve:block,r-cr-o-i-ci:hor20,a:blinkwait700-blinkoff40
 -- wl clipboard transient window fix
 vim.opt.clipboard = "unnamedplus"
 
+-- ssh clipboard config
+if vim.env.SSH_TTY ~= nil then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+end
+
 -- LSP Server to use for Rust.
 -- Set to "bacon-ls" to use bacon-ls instead of rust-analyzer.
 -- only for diagnostics. The rest of LSP support will still be
