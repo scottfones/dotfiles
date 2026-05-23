@@ -1,16 +1,12 @@
--- Pull in the wezterm API
 local wezterm = require("wezterm")
 
--- This will hold the configuration.
 local config = wezterm.config_builder()
 
--- Set TERM to constructed wezterm in ~/.terminfo/w/wezterm
 config.term = "wezterm"
 
--- Spawn a fish shell in login mode
 config.default_prog = { "/usr/bin/fish", "-l" }
 
--- This is where you actually apply your config choices
+-- Config modules
 local startup_settings = require("startup")
 startup_settings.apply_to_config(config)
 
@@ -29,5 +25,10 @@ cursor_settings.apply_to_config(config)
 local keymap_settings = require("keymaps")
 keymap_settings.apply_to_config(config)
 
--- return the configuration to wezterm
+local ssh_settings = require("ssh")
+ssh_settings.apply_to_config(config)
+
+local launch_menu_settings = require("launch_menu")
+launch_menu_settings.apply_to_config(config)
+
 return config
